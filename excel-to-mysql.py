@@ -4,8 +4,6 @@ excel_file = pd.ExcelFile("test.xlsx")  # insert file here
 script_file_path = "sql-script.txt"  # results in text file
 sheet_lists = excel_file.sheet_names
 
-# results_file = open(script_file_path, "w")
-# results_file.close()
 # for a in range (len(sheet_lists)):
 #     df = pd.read_excel(excel_file, sheet_name=sheet_lists[a], dtype=str)
 #     header = df.columns.values #put tabel header to list
@@ -40,13 +38,13 @@ sheet_lists = excel_file.sheet_names
 #         else:
 #             script.write(" TIPE_DATA(ANGKA),\n")
 
+emptyScript = open(script_file_path, "w")  # to empty/erase the script
+emptyScript.close()
 for a in range(len(sheet_lists)):
     df = pd.read_excel(excel_file, sheet_name=sheet_lists[a], dtype=str)
     # print(df)
     header = df.columns.values  # put tabel header to list
-    script = open(
-        script_file_path, "w"
-    )  # open/create script, file is overwitten, use a for append
+    script = open(script_file_path, "a")
     script.write("insert into " + sheet_lists[a] + " (")
     for i in range(len(header)):  # for loop that write header row to script
         script.write(header[i])
@@ -87,3 +85,4 @@ for a in range(len(sheet_lists)):
     header = df.columns.values  # put tabel header to list
     script = open(script_file_path, "a")  # open/create script
     script.write("select * from " + sheet_lists[a] + "\n")
+    script.close()

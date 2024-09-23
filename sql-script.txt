@@ -3,4 +3,10 @@ insert into employee (ID, Name, Title) values
 ('21313', 'Doe', 'Employee'),
 ('13213', 'Alexia', 'Employee');
 
+insert into salary (ID, Salary) values
+('1213', '1000'),
+('21313', '1000'),
+('13213', '1500');
+
 select * from employee
+select * from salary
