@@ -1,0 +1,6 @@
+insert into employee (ID, Name, Title) values
+('1213', 'John', 'Manager'),
+('21313', 'Doe', 'Employee'),
+('13213', 'Alexia', 'Employee');
+
+select * from employee
